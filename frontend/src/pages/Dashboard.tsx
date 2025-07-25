@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { FinancialChart } from '@/components/dashboard/FinancialChart';
+import { CreatePlanModal } from '@/components/dashboard/modals/CreatePlanModal';
 import { RecentRegistrations } from '@/components/dashboard/RecentRegistrations';
 import { StatsCard } from '@/components/dashboard/StatsCard';
 import { Button } from '@/components/ui/button';
@@ -20,6 +21,7 @@ export const Dashboard = () => {
   const [NovosAlunosMensal, setNovosAlunosMensal] = useState(0);
   const [NovosAlunosSemanal, setNovosAlunosSemanal] = useState(0);
   const [TotalDeAlunos, setTotalDeAlunos] = useState(0);
+  const [CriarPlanoOpen, setCriarPlanoOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-100 to-blue-200/20 p-6">
@@ -121,7 +123,7 @@ export const Dashboard = () => {
           <CardContent>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
               <Button
-                className="flex h-20 flex-col gap-2"
+                className="flex h-20 cursor-pointer flex-col gap-2 transition duration-700 hover:scale-110 hover:bg-[linear-gradient(135deg,hsl(25,95%,58%)_0%,hsl(45,93%,47%)_100%)] hover:opacity-90 hover:shadow-[0_0_20px_rgba(251,146,60,0.4)]"
                 // onClick={() => setCadastroAlunoOpen(true)}
                 variant="outline"
               >
@@ -129,28 +131,50 @@ export const Dashboard = () => {
                 <span className="text-sm">Novo Aluno</span>
               </Button>
 
-              <Button className="flex h-20 flex-col gap-2" variant="outline">
+              <Button
+                className="flex h-20 cursor-pointer flex-col gap-2 transition duration-700 hover:scale-110 hover:bg-[linear-gradient(135deg,hsl(25,95%,58%)_0%,hsl(45,93%,47%)_100%)] hover:opacity-90 hover:shadow-[0_0_20px_rgba(251,146,60,0.4)]"
+                variant="outline"
+              >
                 <Building className="h-6 w-6" />
                 <span className="text-sm">Novo Funcionário</span>
               </Button>
 
-              <Button className="flex h-20 flex-col gap-2" variant="outline">
+              <Button
+                className="flex h-20 cursor-pointer flex-col gap-2 transition duration-700 hover:scale-110 hover:bg-[linear-gradient(135deg,hsl(25,95%,58%)_0%,hsl(45,93%,47%)_100%)] hover:opacity-90 hover:shadow-[0_0_20px_rgba(251,146,60,0.4)]"
+                onClick={() => setCriarPlanoOpen(true)}
+                variant="outline"
+              >
                 <CreditCard className="h-6 w-6" />
                 <span className="text-sm">Novo Plano</span>
               </Button>
 
               <Button
-                className="flex h-20 flex-col gap-2"
+                className="flex h-20 cursor-pointer flex-col gap-2 transition duration-700 hover:scale-110 hover:bg-[linear-gradient(135deg,hsl(25,95%,58%)_0%,hsl(45,93%,47%)_100%)] hover:opacity-90 hover:shadow-[0_0_20px_rgba(251,146,60,0.4)]"
                 // onClick={() => setCatracaOpen(true)}
                 variant="outline"
               >
-                <Scan className="h-6 w-6" />
+                <Scan className="h-6 w-6 " />
                 <span className="text-sm">Catraca</span>
               </Button>
             </div>
           </CardContent>
         </Card>
       </div>
+      {/* Modals */}
+      <CreatePlanModal onOpenChange={setCriarPlanoOpen} open={CriarPlanoOpen} />
+      {/* <CadastroAlunoModal
+        onOpenChange={setCadastroAlunoOpen}
+        open={cadastroAlunoOpen}
+      /> */}
+
+      {/* <CadastroFuncionarioModal
+        onOpenChange={setCadastroFuncionarioOpen}
+        open={cadastroFuncionarioOpen}
+      />
+
+      <CriarPlanoModal onOpenChange={setCriarPlanoOpen} open={criarPlanoOpen} />
+
+      <CatracaModal onOpenChange={setCatracaOpen} open={catracaOpen} /> */}
     </div>
   );
 };

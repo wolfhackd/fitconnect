@@ -13,13 +13,7 @@ import {
 
 export const RecentRegistrations = () => {
   return (
-    // <div className="mx-auto w-full max-w-3xl rounded-lg bg-white p-4 shadow-md">
-    //   <div>
-    //     <UserCheck />
-    //     <h1 className="font-bold">Últimos Cadastros</h1>
-    //   </div>
-    // </div>
-    <Card>
+    <Card className="min-h-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <UserCheck />
